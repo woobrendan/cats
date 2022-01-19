@@ -1,12 +1,15 @@
 
 const fs = require('fs');
-const { callbackify } = require('util');
 
 const breedDetailsFromFile = function(breed, cb) {
-  console.log('breedDetailsFromFile: Calling readFile...');
+  // console.log('breedDetailsFromFile: Calling readFile...');
   fs.readFile(`./data/${breed}.txt`, 'utf8', (error, data) => {
-    console.log("In readFile's Callback: it has the data.");
-    if (!error) cb(data);
+    // console.log("In readFile's Callback: it has the data.");
+    if (!error) {
+      cb(data);
+    } else {
+      cb(undefined)
+    }
   });
 };
 const printOutCatBreed = breed => {
@@ -16,3 +19,4 @@ const printOutCatBreed = breed => {
 breedDetailsFromFile('Bombay', printOutCatBreed);
 
 
+module.exports = breedDetailsFromFile;

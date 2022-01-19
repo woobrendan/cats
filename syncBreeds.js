@@ -5,8 +5,13 @@ const catBreeds = {
 
 // synchronous function to fetch a cat breed
 const breedDetails = function(breed) {
+  if (breed === undefined || breed === '') {
+    return undefined;
+  }
   return catBreeds[breed];
 };
 // get the return value right away from the function
-const bombay = breedDetails('Bombay');
-console.log(bombay);
+// const bombay = breedDetails('Bombay');
+// console.log(bombay);
+
+module.exports = breedDetails;
